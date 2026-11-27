@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0b110e">
+  <title>Digit Garden · Handwritten Digit Classifier</title>
+  <link rel="stylesheet" href="./styles.css">
+  <script src="./script.js" defer></script>
+</head>
+<body>
+  <div class="shell">
+    <header class="site-header">
+      <a class="brand" href="./" aria-label="Digit Garden home">
+        <span class="brand-mark" aria-hidden="true"><i></i></span>
+        <span>Digit Garden</span>
+      </a>
+      <div class="model-info"><span aria-hidden="true"></span> PyTorch CNN</div>
+    </header>
+
+    <main>
+      <section class="hero" aria-labelledby="page-title">
+        <div class="hero-copy">
+          <h1 id="page-title">Handwritten digit <span>recognition</span></h1>
+          <p>Give the model an image with one handwritten digit and see what it reads.</p>
+        </div>
+        <div class="hero-art" aria-hidden="true">
+          <img src="./frog.png" alt="" width="384" height="320" fetchpriority="high">
+        </div>
+      </section>
+
+      <div class="workspace">
+        <section class="panel input-panel" aria-labelledby="input-title">
+          <h2 id="input-title">Input image</h2>
+          <p class="panel-copy">Upload a digit from 0 to 9 or try a sample.</p>
+
+          <form id="predict-form">
+            <div class="drop-zone" id="drop-zone">
+              <div id="upload-prompt" class="upload-prompt">
+                <span class="upload-icon" aria-hidden="true"><i></i></span>
+                <span class="drop-title">Drop an image here</span>
+                <span class="drop-formats">PNG, JPG, or WebP · up to 12 MB</span>
+              </div>
+              <div id="preview-panel" class="preview-panel" hidden>
+                <img id="preview" alt="The processed 28 by 28 image sent to the model" width="72" height="72">
+                <div class="preview-meta">
+                  <strong id="file-name"></strong>
+                  <span>28 × 28 model input</span>
+                </div>
+              </div>
+              <input id="image-file" type="file" accept=".png,.jpg,.jpeg,.webp,image/png,image/jpeg,image/webp" hidden>
+              <button type="button" class="button button-quiet" id="browse-button">Browse files</button>
+            </div>
+
+            <div class="actions">
+              <button type="submit" class="button button-primary" id="predict-button" disabled>
+                <span class="predict-icon" aria-hidden="true">✦</span>
+                <span id="predict-button-label">Predict digit</span>
+              </button>
+              <button type="button" class="button button-secondary" id="sample-button">Try a sample</button>
+            </div>
+            <p id="input-error" class="error-message" role="alert" hidden></p>
+          </form>
+        </section>
+
+        <section class="panel result-panel" aria-labelledby="result-title">
+          <h2 id="result-title">Prediction</h2>
+          <p class="panel-copy">The digit returned by your model.</p>
+          <div id="result-well" class="result-well" data-state="idle">
+            <div class="result-display" aria-hidden="true">
+              <i class="corner"></i><i class="corner"></i><i class="corner"></i><i class="corner"></i>
+              <span id="result-value" class="result-value">?</span>
+            </div>
+            <p id="result-status" class="result-status" role="status" aria-live="polite">Awaiting an image</p>
+          </div>
+        </section>
+      </div>
+      <div></div>
+      
+    </main>
+  </div>
+</body>
+</html>
